@@ -1,0 +1,105 @@
+﻿@model List<T2_RamirezMoreni.Models.Alumno>
+@{
+    ViewBag.Title = "Alumnos";
+}
+
+<div style="width: 90%; margin: 30px auto;">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+            <h2 style="margin-bottom: 5px;">Registro de Alumnos</h2>
+            <p style="color: #666;">Listado de alumnos registrados</p>
+        </div>
+
+        @Html.ActionLink(
+            "＋ Nuevo Alumno",
+            "Agregar",
+            "Alumno",
+            null,
+            new
+            {
+                @class = "btn btn-primary"
+            }
+        )
+    </div>
+
+    <div style="background: white; border: 1px solid #ddd; border-radius: 10px; padding: 15px;">
+
+        <table class="table" style="margin-bottom: 0;">
+
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>DNI</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Carrera</th>
+                    <th>Ciclo</th>
+                    <th style="text-align: center;">Opciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            <strong>@item.dni</strong>
+                        </td>
+
+                        <td>
+                            @item.nombres
+                        </td>
+
+                        <td>
+                            @item.apellidos
+                        </td>
+
+                        <td>
+                            @item.carrera
+                        </td>
+
+                        <td>
+                            @item.ciclo
+                        </td>
+
+                        <td style="text-align: center;">
+
+                            @Html.ActionLink(
+                                "Ver",
+                                "Detalles",
+                                new { dni = item.dni },
+                                new { @class = "btn btn-info btn-sm" }
+                            )
+
+                            @Html.ActionLink(
+                                "Editar",
+                                "Actualizar",
+                                new { dni = item.dni },
+                                new { @class = "btn btn-warning btn-sm" }
+                            )
+
+                            @Html.ActionLink(
+                                "Eliminar",
+                                "Eliminar",
+                                new { dni = item.dni },
+                                new
+                                {
+                                    @class = "btn btn-danger btn-sm",
+                                    onclick = "return confirm('¿Está seguro de eliminar este alumno?');"
+                                }
+                            )
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

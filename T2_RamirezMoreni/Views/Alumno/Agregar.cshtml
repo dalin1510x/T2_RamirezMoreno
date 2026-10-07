@@ -1,0 +1,119 @@
+﻿
+@model T2_RamirezMoreni.Models.Alumno
+
+@{
+    ViewBag.Title = "Nuevo Alumno";
+}
+
+<div style="width: 650px; margin: 35px auto;">
+
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2>Nuevo Alumno</h2>
+        <p style="color: #777;">
+            Complete los datos del estudiante
+        </p>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="border: 1px solid #ddd; border-radius: 12px; padding: 30px;">
+
+            <div class="form-group">
+                <label>DNI</label>
+
+                @Html.TextBoxFor(
+                    m => m.dni,
+                    new
+                    {
+                        @class = "form-control",
+                        placeholder = "Ingrese el DNI"
+                    }
+                )
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <label>Nombres</label>
+
+                @Html.TextBoxFor(
+                    m => m.nombres,
+                    new
+                    {
+                        @class = "form-control",
+                        placeholder = "Ingrese los nombres"
+                    }
+                )
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <label>Apellidos</label>
+
+                @Html.TextBoxFor(
+                    m => m.apellidos,
+                    new
+                    {
+                        @class = "form-control",
+                        placeholder = "Ingrese los apellidos"
+                    }
+                )
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <label>Carrera</label>
+
+                @Html.TextBoxFor(
+                    m => m.carrera,
+                    new
+                    {
+                        @class = "form-control",
+                        placeholder = "Ingrese la carrera"
+                    }
+                )
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <label>Ciclo</label>
+
+                @Html.TextBoxFor(
+                    m => m.ciclo,
+                    new
+                    {
+                        @class = "form-control",
+                        type = "number",
+                        min = "1",
+                        placeholder = "Ingrese el ciclo"
+                    }
+                )
+            </div>
+
+            <br />
+
+            <div style="text-align: right;">
+
+                @Html.ActionLink(
+                    "Cancelar",
+                    "Index",
+                    null,
+                    new { @class = "btn btn-default" }
+                )
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Registrar Alumno
+                </button>
+
+            </div>
+
+        </div>
+    }
+</div>
+```
